@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   actions: {
     updateRating: function(params) {
       var song = params.item,
-          rating = params.rating;
+        rating = params.rating;
       song.set('rating', rating);
     }
   }
