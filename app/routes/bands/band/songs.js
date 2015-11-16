@@ -16,6 +16,10 @@ export default Ember.Route.extend({
       });
       band.get('songs').pushObject(song);
       controller.set('title','');
+    },
+    didTransition: function() {
+      var band = this.modelFor('bands.band');
+      document.title = `${band.get('name')} songs - Rock & Roll`;
     }
   }
 });
