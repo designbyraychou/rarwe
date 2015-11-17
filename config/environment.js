@@ -1,15 +1,15 @@
 /* jshint node: true */
 
-
 var contentSecurityPolicy = {
   'default-src': "'none'",
   'script-src': "'self'",
   'font-src': "'self'",
-  'connect-src': "'self' localhost:* json-api.rockandrollwithemberjs.com:*",
+  'connect-src': "'self' localhost:* json - api.rockandrollwithemberjs.com: * ",
   'img-src': "'self'",
   'style-src': "'self' 'unsafe-inline'",
   'media-src': "'self'"
 };
+
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'rarwe',
@@ -17,7 +17,6 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     apiHost: 'http://json-api.rockandrollwithemberjs.com',
-    contentSecurityPolicy: contentSecurityPolicy,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -28,7 +27,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    contentSecurityPolicy: contentSecurityPolicy,
   };
 
   if (environment === 'development') {
@@ -37,8 +37,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.contentSecurityPolicy = contentSecurityPolicy;
-    ENV.contentSecurityPolicy['script-src'] = "'self' 'unsafe-eval'";
   }
 
   if (environment === 'test') {

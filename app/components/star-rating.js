@@ -1,36 +1,33 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'div',
-  classNames: ['rating-panel'],
-  rating: 0,
-  maxRating: 5,
-  item: null,
-  "on-click": '',
-  setAction: '',
-  stars: Ember.computed('rating', 'maxRating', function() {
+  tagName    : 'div',
+  classNames : ['rating-panel'],
+  rating     : 0,
+  maxRating  : 5,
+  item       : null,
+  setAction  : '',
+  stars: Ember.computed('rating', 'maxRating', function(){
     var fullStars = this.starRange(1, this.get('rating'), 'full');
     var emptyStars = this.starRange(this.get('rating') + 1, this.get('maxRating'), 'empty');
     return fullStars.concat(emptyStars);
   }),
-  starRange: function(start, end, type) {
+  starRange: function(start, end, type){
     var starsData = [];
+    
     for (var i = start; i <= end; i++) {
-      starsData.push({ rating: i, full: type === 'full' });
+      starsData.push({rating: i, full: type === 'full'});
     }
+
     return starsData;
   },
   actions: {
     set: function(newRating) {
-      this.sendAction('on-click',{
+      this.get('on-click')({
         item: this.get('item'),
         rating: newRating
       });
-    },
-    updateRating: function(params) {
-      var song = params.item,
-        rating = params.rating;
-      song.set('rating',rating);
     }
-  }
+  },
+  'on-click': ''
 });
