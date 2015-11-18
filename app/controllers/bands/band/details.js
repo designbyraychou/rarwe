@@ -7,8 +7,9 @@ export default Ember.Controller.extend({
       this.set('isEditing', true);
     },
     save: function() {
-      this.set('isEditing', false);
-      return true;
+      var controller = this.get('controller'),
+        band = controller.get('model');
+      return band.save();
     }
   }
 });
