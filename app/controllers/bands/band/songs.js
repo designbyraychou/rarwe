@@ -49,15 +49,11 @@ export default Ember.Controller.extend({
     },
 
     updateRating: function(params) {
-      var song = params.item,
-        rating = params.rating;
-
       if (song.get('rating') === rating) {
-        rating = 0;
+        rating = null;
       }
       song.set('rating', rating);
-      song.save();
-
+      return song.save();
     },
 
     setSorting: function(option) {

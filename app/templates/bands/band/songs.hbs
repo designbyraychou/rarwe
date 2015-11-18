@@ -58,12 +58,21 @@
     {{/unless}}
 
     <!-- List of songs -->
-    {{#each sortedSongs as |song|}}
-      <div class="list-group-item song">
-        {{capitalize song.title}}
-        {{star-rating item=song rating=song.rating on-click=(action "updateRating")}}
-      </div>
-    {{/each}}
+    <div class="list-group songs">
+      {{#each sortedSongs as |song|}}
+        <div class="list-group-item song">
+          {{capitalize song.title}}
+          {{#star-rating item=song rating=song.rating as |stars|}}
+            {{#each stars as |star|}}
+              <span class="star-rating fa
+                    {{if star.full 'fa-star' 'fa-star-o'}}"
+                    {{action "updateRating" song star.rating}}>
+              </span>
+            {{/each}}
+          {{/star-rating}}
+        </div>
+      {{/each}}
+    </div>
 
   </ul>
 </div>
