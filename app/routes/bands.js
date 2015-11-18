@@ -27,7 +27,7 @@ export default Ember.Route.extend({
         controller.set('name', '');
         route.transitionTo('bands.band.songs', band);
       });
-      
+
     }
   }
 });
